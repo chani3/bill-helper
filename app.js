@@ -12,7 +12,11 @@ var helloData = {
 }
 
 app.get('/', function(req, res){
-  res.render('hello', helloData);
+  res.render('input', {});
+});
+
+app.post('/analysis', function (req, res) {
+  res.render('analysis', helloData);
 });
 
 
