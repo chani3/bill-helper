@@ -1,0 +1,24 @@
+
+let's start with a fairly hardcoded app.
+that... does present a few... security concerns, though. minor ones, though.
+for now, let's call the regular bills... A, H, V and R. and the accounts V, I and P.
+if someone guesses what those stand for, it probably isn't that big a deal anyways, with how tight most of them are about giving out information.
+
+later I'll probably make the list of items configurable.
+maybe I'll sketch out my process a bit on paper first...
+
+what do I actually do?
+first, I gather the amounts for each bill. (rent fixed/year, the rest from epost)
+then, I optionaly scan my visa bill for large shared purchases.
+I tally up all the shared purchases (the set ones are precalculated, then I add half of the variable ones)
+I send pete a note asking for his share
+then I calculate how much money neesd to be moved to which accounts, and go do that
+then I pay the bills that need doing manually.
+
+I wonder if I can get the visa bill in a format the app could scan... well, I know I can get alternate formats, but logging in and getting the file might take longer than doing the math myself :P
+
+oh, and I need to load basic auth from a file, if I'm going to track history (or even, what the rent amout is). but let's get a working app first.
+maybe I can load the rent amount, bill types etc. from a json file at first instead of a db?  and then later I just load a password and have a screen for setting those up.
+
+later I should rewrite this to do input & analysis on one page... really it's just a little math, should be able to do it client-side once the right numbers are downloaded.
+oh. math. I... I'll have to be careful with that. silly javascript.
