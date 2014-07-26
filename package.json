@@ -1,0 +1,10 @@
+{
+  "name": "bill-helper",
+  "description": "personal helper app for monthly bills",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "ejs": "~1"
+  }
+}
