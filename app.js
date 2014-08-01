@@ -13,7 +13,7 @@ app.get('/', function(req, res){
   res.render('input', {});
 });
 
-app.post('/analysis', function (req, res) {
+app.post('/', function (req, res) {
   var data = analyze(req.body);
   console.log(data);
   res.render('analysis', data);
