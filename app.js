@@ -47,34 +47,39 @@ app.listen(PORT);
 //business logic ain't big enough for its own file yet
 
 function analyze(input) {
-  //bills A and H come from account I.
-  //bill V comes from account V
-  //partner pays into account V
-  //bills A and H are shared; sharedV and other are also shared costs for now (from V and other sources)
-  //^^^ TODO: put that logic into a json file
-  
   console.log(input);
+  
   //mathify all potential strings
-  var data = {
-    billA: toCurrency(input.billA),
-    billH: toCurrency(input.billH),
-    billV: toCurrency(input.billV),
-    sharedV: toCurrency(input.sharedV),
-    other: toCurrency(input.other),
-    accountI: toCurrency(input.accountI),
-    accountV: toCurrency(input.accountV)
-  };
+  var data = {};
+  Object.keys(input).forEach(function(key){
+    data[key] = toCurrency(input[key]);
+  });
   
   //note: there's still a chance of small rounding errors here, but they should be way less than a penny
   //and since I round my money transfers up to the nearest $10, I don't care.
-  var shared = data.billA + data.billH + data.sharedV + data.other;
+  
+  var shared = 0;
+  var debits = {};
+  billInfo.accounts.forEach(function(name){
+    debits[name] = -data[name];
+  });
+  
+  billInfo.bills.forEach(function(bill){
+    var amount = data[bill.name];
+    if (bill.shared) {
+      shared += amount;
+    }
+    if (bill.paidFrom) {
+      debits[bill.paidFrom] += amount;
+    }
+  });
+  
   data.partner = shared/2;
-  
-  var debitI = data.billA + data.billH;
-  var debitV = data.billV - data.partner;
-  
-  data.addI = debitI - data.accountI;
-  data.addV = debitV - data.accountV;
+  debits[billInfo.partnerTo] -= data.partner;
+  data.debits = debits;
+  //temp. data until I update analysis html:
+  data.addI = debits['accountI'];
+  data.addV = debits['accountV'];
   
   return data;
 }
