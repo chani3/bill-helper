@@ -4,7 +4,8 @@ var bodyParser = require('body-parser')
 var PORT = 3000; //TODO make option
 
 var app = express();
-app.engine('.html', require('ejs').__express);
+var ejs = require('ejs');
+app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 app.use(bodyParser.urlencoded({extended:false}));
 
@@ -59,4 +60,8 @@ function analyze(input) {
 function toCurrency(input) {
   //parseFloat returns NaN for blanks, in which case we want 0.
   return parseFloat(input) || 0;
+}
+
+ejs.filters.currency = function (amount) {
+  return '$' + amount.toFixed(2);
 }
