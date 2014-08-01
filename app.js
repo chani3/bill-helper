@@ -50,9 +50,11 @@ function analyze(input) {
   console.log(input);
   
   //mathify all potential strings
-  var data = {};
+  var data = {
+    input: {}
+  };
   Object.keys(input).forEach(function(key){
-    data[key] = toCurrency(input[key]);
+    data.input[key] = toCurrency(input[key]);
   });
   
   //note: there's still a chance of small rounding errors here, but they should be way less than a penny
@@ -61,11 +63,11 @@ function analyze(input) {
   var shared = 0;
   var debits = {};
   billInfo.accounts.forEach(function(name){
-    debits[name] = -data[name];
+    debits[name] = -data.input[name];
   });
   
   billInfo.bills.forEach(function(bill){
-    var amount = data[bill.name];
+    var amount = data.input[bill.name];
     if (bill.shared) {
       shared += amount;
     }
@@ -77,9 +79,6 @@ function analyze(input) {
   data.partner = shared/2;
   debits[billInfo.partnerTo] -= data.partner;
   data.debits = debits;
-  //temp. data until I update analysis html:
-  data.addI = debits['accountI'];
-  data.addV = debits['accountV'];
   
   return data;
 }

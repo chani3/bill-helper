@@ -5,26 +5,17 @@
 
 Partner pays: <strong><%=: partner | currency %></strong> <br />
 
-Add to account I: <strong><%=: addI | currency %></strong> <br />
-
-Add to account V: <strong><%=: addV | currency %></strong> <br />
+<% Object.keys(debits).forEach(function(name){ %>
+  Add to <%=name%>: <strong><%=: debits[name] | currency %></strong>
+  <br />
+<% }) %>
 
 <br />
 <h3>Input:</h3>
-Bill A: <%=: billA | currency %>
-<br />
-Bill H: <%=: billH | currency %>
-<br />
-Bill V: <%=: billV | currency %>
-<br />
-Other shared: <%=: other | currency %>
-<br />
 
-<br />
-Account I balance: <%=: accountI | currency %>
-<br />
-Account V balance: <%=: accountV | currency %>
-<br />
-
+<% Object.keys(input).forEach(function(name){ %>
+  <%=name%>: <%=: input[name] | currency%>
+  <br />
+<% }) %>
 
 </body></html>
