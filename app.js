@@ -3,6 +3,29 @@ var bodyParser = require('body-parser')
 
 var PORT = 3000; //TODO make option
 
+//TODO load from file:
+var billInfo = {
+  accounts: ['accountI', 'accountV'],
+  bills: [
+    { name: 'billA',
+      paidFrom: 'accountI',
+      shared: true
+    },
+    { name: 'billH',
+      paidFrom: 'accountI',
+      shared: true
+    },
+    { name: 'billV',
+      paidFrom: 'accountV',
+      shared: false
+    },
+    { name: 'other',
+      shared: true
+    }
+    ],
+  partnerTo: 'accountV'
+};
+
 var app = express();
 var ejs = require('ejs');
 app.engine('.html', ejs.__express);
@@ -10,7 +33,7 @@ app.set('view engine', 'html');
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.get('/', function(req, res){
-  res.render('input', {});
+  res.render('input', billInfo);
 });
 
 app.post('/', function (req, res) {
@@ -20,7 +43,6 @@ app.post('/', function (req, res) {
 });
 
 app.listen(PORT);
-
 
 //business logic ain't big enough for its own file yet
 
