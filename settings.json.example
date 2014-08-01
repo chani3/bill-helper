@@ -1,0 +1,24 @@
+{
+  "port": 3001,
+  "billInfo": {
+    "accounts": ["accountI", "accountV"],
+      "bills": [
+      { "name": "billA",
+        "paidFrom": "accountI",
+        "shared": true
+      },
+      { "name": "billH",
+        "paidFrom": "accountI",
+        "shared": true
+      },
+      { "name": "billV",
+        "paidFrom": "accountV",
+        "shared": false
+      },
+      { "name": "other",
+        "shared": true
+      }
+      ],
+    "partnerTo": "accountV"
+  }
+}

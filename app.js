@@ -1,30 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 
-var PORT = 3000; //TODO make option
-
-//TODO load from file:
-var billInfo = {
-  accounts: ['accountI', 'accountV'],
-  bills: [
-    { name: 'billA',
-      paidFrom: 'accountI',
-      shared: true
-    },
-    { name: 'billH',
-      paidFrom: 'accountI',
-      shared: true
-    },
-    { name: 'billV',
-      paidFrom: 'accountV',
-      shared: false
-    },
-    { name: 'other',
-      shared: true
-    }
-    ],
-  partnerTo: 'accountV'
-};
+var settings = require('./settings.json');
+var PORT = settings.port || 3000;
+var billInfo = settings.billInfo;
 
 var app = express();
 var ejs = require('ejs');
