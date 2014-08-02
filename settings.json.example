@@ -15,6 +15,10 @@
         "paidFrom": "accountV",
         "shared": false
       },
+      { "name": "Rent",
+        "shared": true,
+        "amount": 1234
+      },
       { "name": "other",
         "shared": true
       }

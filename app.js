@@ -46,7 +46,7 @@ function analyze(input) {
   });
   
   billInfo.bills.forEach(function(bill){
-    var amount = data.input[bill.name];
+    var amount = bill.amount || data.input[bill.name];
     if (bill.shared) {
       shared += amount;
     }

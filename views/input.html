@@ -4,10 +4,12 @@
 
 <form method='post' action='/'>
 
-<% bills.forEach(function(bill){ %>
-  <%=bill.name%>: <input type='number' step='0.01' name='<%=bill.name%>'>
-  <br />
-<% }) %>
+<% bills.forEach(function(bill){ 
+    if (!bill.amount) {%>
+      <%=bill.name%>: <input type='number' step='0.01' name='<%=bill.name%>'>
+      <br />
+<% }
+}) %>
 
 <br />
 
