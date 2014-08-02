@@ -47,6 +47,10 @@ function analyze(input) {
   
   billInfo.bills.forEach(function(bill){
     var amount = bill.amount || data.input[bill.name];
+    if (bill.amount) {
+      //cheap way of showing static bills on the analysis page
+      data.input[bill.name] = bill.amount;
+    }
     if (bill.shared) {
       shared += amount;
     }
