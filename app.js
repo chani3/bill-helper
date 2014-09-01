@@ -41,8 +41,9 @@ function analyze(input) {
   
   var shared = 0;
   var debits = {};
-  billInfo.accounts.forEach(function(name){
-    debits[name] = -data.input[name];
+  billInfo.accounts.forEach(function(account){
+    var currentBalance = data.input[account.name];
+    debits[account.name] = account.minBalance - currentBalance;
   });
   
   billInfo.bills.forEach(function(bill){

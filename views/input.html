@@ -13,8 +13,8 @@
 
 <br />
 
-<% accounts.forEach(function(name){ %>
-  <%=name%> balance: <input type='number' step='0.01' name='<%=name%>'>
+<% accounts.forEach(function(account){ %>
+  <%=account.name%> balance: <input type='number' step='0.01' name='<%=account.name%>'>
   <br />
 <% }) %>
 
