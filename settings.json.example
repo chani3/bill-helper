@@ -30,6 +30,7 @@
         "shared": true
       }
       ],
-    "partnerTo": "accountV"
+    "partnerTo": "accountV",
+    "partnerShare": 0.5
   }
 }

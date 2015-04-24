@@ -1,5 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 var settings = require('./settings.json');
 var PORT = settings.port || 3000;
@@ -60,7 +60,7 @@ function analyze(input) {
     }
   });
   
-  data.partner = shared/2;
+  data.partner = shared * billInfo.partnerShare;
   debits[billInfo.partnerTo] -= data.partner;
   data.debits = debits;
   
