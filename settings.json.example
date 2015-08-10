@@ -32,5 +32,9 @@
       ],
     "partnerTo": "accountV",
     "partnerShare": 0.5
-  }
+  },
+  "urls": [
+    "https://example.com/bank1",
+    "https://example.com/bank2"
+  ]
 }

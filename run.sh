@@ -7,5 +7,8 @@ echo pid is $nodePid
 trap "echo killing node...; kill $nodePid" EXIT
 
 port=$(jq '.port' settings.json)
-firefox --new-window http://localhost:$port/
+urls=$(jq -r '.urls[]' settings.json)
+
+#echo "urls: $urls"
+firefox --new-window http://localhost:$port/ $urls
 wait $nodePid
