@@ -1,4 +1,7 @@
 {
-  "name": "Bill-helper"
-, "files": [ { "git": 1 } ]
+  "name": "Bill-helper",
+  "files": [
+    { "git": 1 },
+    { "filters": "settings.json" }
+  ]
 }
